@@ -128,6 +128,7 @@ async def text_message(message: types.Message):
         app_data = get_app(uuid_)
         await bot.send_message(int(ex_id), f'Ваша заявка отклонена\n\n{app_data}\n\nПричина:\n{message.text}')
         await bot.send_message(message.chat.id, 'Сообщение отправлено\nЗаявка отклонена', reply_markup=main_markup())
+        del reject_message[message.chat.id]
 
 
 @dp.callback_query_handler()
